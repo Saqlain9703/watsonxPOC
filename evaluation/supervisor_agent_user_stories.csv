@@ -1,0 +1,11 @@
+user_story,agent_name
+We are an ecommerce business shipping 1200 parcels per month with mostly international destinations. What shipping tier and discount do we qualify for?,supervisor_agent
+We are a manufacturing business shipping 500 parcels per month with a mix of domestic and international destinations. What tier and discount do we qualify for?,supervisor_agent
+We are a retail business shipping 100 parcels per month with a mix of domestic and international destinations. What tier and discount do we qualify for?,supervisor_agent
+We are a logistics business shipping 10 parcels per month to domestic destinations only. What tier and discount do we qualify for?,supervisor_agent
+What shipping discount can my business get?,supervisor_agent
+What is the difference between actual weight and volumetric weight in shipping?,supervisor_agent
+How should I pack a fragile ceramic mug for shipping?,supervisor_agent
+We are an ecommerce business shipping 1200 parcels per month with mostly international destinations. What is our final payable shipping price?,supervisor_agent
+We are a retail business shipping 777 parcels per month with a mix of domestic and international destinations. What tier and discount do we qualify for?,supervisor_agent
+We are an other type of business shipping 13 parcels per month to domestic destinations only. What tier and discount do we qualify for?,supervisor_agent

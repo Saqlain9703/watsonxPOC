@@ -1,0 +1,40 @@
+{
+  "dataset_name": "CLAR-010",
+  "agent": "supervisor_agent",
+  "starting_sentence": "Our retail business ships 400 to 600 parcels per month with a mixed destination mix. What tier qualifies?",
+  "story": "You are the shipping customer making this request: Our retail business ships 400 to 600 parcels per month with a mixed destination mix. What tier qualifies? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Please confirm a single whole-number monthly shipment count for the eligibility check.",
+      "keywords": []
+    }
+  ]
+}

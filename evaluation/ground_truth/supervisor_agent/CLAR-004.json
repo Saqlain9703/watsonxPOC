@@ -1,0 +1,40 @@
+{
+  "dataset_name": "CLAR-004",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We ship 600 parcels per month with a mixed destination mix. What discount can we get?",
+  "story": "You are the shipping customer making this request: We ship 600 parcels per month with a mixed destination mix. What discount can we get? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "What is your business type: ecommerce, retail, manufacturing, logistics, or other?",
+      "keywords": []
+    }
+  ]
+}

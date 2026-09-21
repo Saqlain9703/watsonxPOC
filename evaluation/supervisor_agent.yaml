@@ -1,0 +1,12 @@
+# Run from the repository root with ADK 2.16.1 / evaluation framework 1.5.2.
+test_paths:
+  - evaluation/ground_truth/supervisor_agent
+output_dir: evaluation/output/supervisor_agent
+n_runs: 3
+max_user_turns: 1
+num_workers: 2
+skip_legacy_evaluation: false
+enable_verbose_logging: true
+provider_config:
+  provider: gateway
+  model_id: watsonx/openai/gpt-oss-120b

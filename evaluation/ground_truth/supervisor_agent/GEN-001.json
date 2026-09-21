@@ -1,0 +1,40 @@
+{
+  "dataset_name": "GEN-001",
+  "agent": "supervisor_agent",
+  "starting_sentence": "Hello!",
+  "story": "You are the shipping customer making this request: Hello! This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "general_enquiry_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Hello! I can help with shipping questions and simulated rate eligibility.",
+      "keywords": []
+    }
+  ]
+}

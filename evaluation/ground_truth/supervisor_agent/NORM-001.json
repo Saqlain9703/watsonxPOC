@@ -1,0 +1,56 @@
+{
+  "dataset_name": "NORM-001",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We run an e-commerce business and ship 600 parcels per month, 0% internationally and 100% domestically. What is our tier and discount?",
+  "story": "You are the shipping customer making this request: We run an e-commerce business and ship 600 parcels per month, 0% internationally and 100% domestically. What is our tier and discount? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "eligibility"
+    ],
+    "eligibility": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "eligibility",
+      "type": "tool_call",
+      "tool_name": "evaluate_rate_eligibility",
+      "args": {
+        "monthly_volume": 600,
+        "destination_mix": "domestic_only",
+        "business_type": "ecommerce"
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Your simulated plan tier is Bronze with a 3% discount. This is a simulated eligibility result, not a binding quote or booking.",
+      "keywords": [
+        "Bronze",
+        "3%"
+      ]
+    }
+  ]
+}

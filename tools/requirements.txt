@@ -1,0 +1,2 @@
+# No third-party runtime dependencies. The Orchestrate runtime supplies the ADK
+# used by the tool decorator. Keep this separate from project dev requirements.

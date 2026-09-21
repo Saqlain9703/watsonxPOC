@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.venv/
+.cache/
+.build/
+__pycache__/
+*.py[cod]
+.DS_Store
+evaluation/output/*
+!evaluation/output/.gitkeep
+governance/monitoring_endpoints.json

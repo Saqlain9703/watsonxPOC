@@ -1,0 +1,40 @@
+{
+  "dataset_name": "GEN-005",
+  "agent": "supervisor_agent",
+  "starting_sentence": "What is the outstanding balance on my shipping account?",
+  "story": "You are the shipping customer making this request: What is the outstanding balance on my shipping account? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "general_enquiry_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "This POC cannot access your account or check your outstanding balance. Please use your account portal or contact your provider.",
+      "keywords": []
+    }
+  ]
+}

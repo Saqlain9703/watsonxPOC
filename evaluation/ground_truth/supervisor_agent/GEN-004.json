@@ -1,0 +1,40 @@
+{
+  "dataset_name": "GEN-004",
+  "agent": "supervisor_agent",
+  "starting_sentence": "Where is my shipment TRACK-DEMO-123 right now?",
+  "story": "You are the shipping customer making this request: Where is my shipment TRACK-DEMO-123 right now? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "general_enquiry_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "This POC cannot look up live shipment tracking. Please check the tracking number with the carrier.",
+      "keywords": []
+    }
+  ]
+}

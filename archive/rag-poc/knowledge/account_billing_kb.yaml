@@ -1,0 +1,25 @@
+# Source manifest: `make knowledge` stages Markdown as supported .txt uploads.
+# Import the rendered .build/knowledge/account_billing_kb.yaml, not this file.
+spec_version: v1
+kind: knowledge_base
+name: account_billing_kb
+description: >
+  Synthetic Northstar Workspace account setup, billing cycles, payment methods,
+  invoices, refunds, and subscription changes. General rules only; individual
+  account records come from get_account_status.
+documents:
+  - docs/account_billing/ab_001_account_setup.md
+  - docs/account_billing/ab_002_billing_cycles.md
+  - docs/account_billing/ab_003_payment_methods.md
+  - docs/account_billing/ab_004_invoices.md
+  - docs/account_billing/ab_005_refunds_policy.md
+  - docs/account_billing/ab_006_subscription_changes.md
+vector_index:
+  embeddings_model_name: ibm/slate-125m-english-rtrvr-v2
+conversational_search_tool:
+  query_source: Agent
+  generation:
+    enabled: false
+    max_docs_passed_to_llm: 5
+  citations:
+    citations_shown: -1

@@ -1,0 +1,40 @@
+{
+  "dataset_name": "CLAR-002",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We are a retail business shipping mixed domestic and international parcels. What tier do we qualify for?",
+  "story": "You are the shipping customer making this request: We are a retail business shipping mixed domestic and international parcels. What tier do we qualify for? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "How many parcels do you ship per month?",
+      "keywords": []
+    }
+  ]
+}

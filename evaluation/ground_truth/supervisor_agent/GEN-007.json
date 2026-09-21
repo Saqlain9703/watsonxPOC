@@ -1,0 +1,40 @@
+{
+  "dataset_name": "GEN-007",
+  "agent": "supervisor_agent",
+  "starting_sentence": "Write me a poem about Mars.",
+  "story": "You are the shipping customer making this request: Write me a poem about Mars. This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "general_enquiry_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "I can help with shipping questions and simulated rate eligibility.",
+      "keywords": []
+    }
+  ]
+}

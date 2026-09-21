@@ -1,0 +1,25 @@
+# Source manifest: `make knowledge` stages Markdown as supported .txt uploads.
+# Import the rendered .build/knowledge/product_policy_kb.yaml, not this file.
+spec_version: v1
+kind: knowledge_base
+name: product_policy_kb
+description: >
+  Synthetic Northstar Workspace capabilities, plan limits, business onboarding
+  requirements, annual billing eligibility, service levels, data retention,
+  and terms. Does not contain individual customer records or billing dates.
+documents:
+  - docs/product_policy/pp_001_product_overview.md
+  - docs/product_policy/pp_002_plans_and_limits.md
+  - docs/product_policy/pp_003_onboarding_eligibility.md
+  - docs/product_policy/pp_004_annual_billing_eligibility.md
+  - docs/product_policy/pp_005_service_levels.md
+  - docs/product_policy/pp_006_data_and_terms.md
+vector_index:
+  embeddings_model_name: ibm/slate-125m-english-rtrvr-v2
+conversational_search_tool:
+  query_source: Agent
+  generation:
+    enabled: false
+    max_docs_passed_to_llm: 5
+  citations:
+    citations_shown: -1

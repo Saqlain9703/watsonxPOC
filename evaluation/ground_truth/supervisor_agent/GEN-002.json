@@ -1,0 +1,40 @@
+{
+  "dataset_name": "GEN-002",
+  "agent": "supervisor_agent",
+  "starting_sentence": "What is the difference between actual weight and volumetric weight?",
+  "story": "You are the shipping customer making this request: What is the difference between actual weight and volumetric weight? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "general_enquiry_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Actual weight is the measured weight of a parcel. Volumetric weight reflects the space it occupies, calculated from its dimensions using a carrier-specific divisor. The applicable divisor and charging rules depend on the carrier and service.",
+      "keywords": []
+    }
+  ]
+}

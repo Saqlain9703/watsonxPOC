@@ -1,0 +1,56 @@
+{
+  "dataset_name": "RATE-003",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We are an retail business shipping 100 parcels per month with a mixed destination mix. What tier and discount qualify?",
+  "story": "You are the shipping customer making this request: We are an retail business shipping 100 parcels per month with a mixed destination mix. What tier and discount qualify? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "eligibility"
+    ],
+    "eligibility": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "eligibility",
+      "type": "tool_call",
+      "tool_name": "evaluate_rate_eligibility",
+      "args": {
+        "monthly_volume": 100,
+        "destination_mix": "mixed",
+        "business_type": "retail"
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Your simulated plan tier is Silver with a 6% discount. This is a simulated eligibility result, not a binding quote or booking.",
+      "keywords": [
+        "Silver",
+        "6%"
+      ]
+    }
+  ]
+}

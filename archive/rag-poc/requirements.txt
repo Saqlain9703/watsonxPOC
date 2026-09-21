@@ -1,0 +1,4 @@
+# Verified with Python 3.12. Recheck docs/cli-surface.md when upgrading the ADK.
+ibm-watsonx-orchestrate==2.16.1
+PyYAML==6.0.3
+python-dotenv==1.2.3

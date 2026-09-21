@@ -1,0 +1,56 @@
+{
+  "dataset_name": "RATE-005",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We are an ecommerce business shipping 0 parcels per month with a domestic only destination mix. What tier and discount qualify?",
+  "story": "You are the shipping customer making this request: We are an ecommerce business shipping 0 parcels per month with a domestic only destination mix. What tier and discount qualify? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "eligibility"
+    ],
+    "eligibility": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "eligibility",
+      "type": "tool_call",
+      "tool_name": "evaluate_rate_eligibility",
+      "args": {
+        "monthly_volume": 0,
+        "destination_mix": "domestic_only",
+        "business_type": "ecommerce"
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Your simulated plan tier is Standard with a 0% discount. This is a simulated eligibility result, not a binding quote or booking.",
+      "keywords": [
+        "Standard",
+        "0%"
+      ]
+    }
+  ]
+}

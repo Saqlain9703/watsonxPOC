@@ -1,0 +1,56 @@
+{
+  "dataset_name": "QUOTE-001",
+  "agent": "supervisor_agent",
+  "starting_sentence": "We are a manufacturing business shipping 500 parcels per month with a mixed destination mix. Give me my final payable shipping price.",
+  "story": "You are the shipping customer making this request: We are a manufacturing business shipping 500 parcels per month with a mixed destination mix. Give me my final payable shipping price. This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "eligibility"
+    ],
+    "eligibility": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "eligibility",
+      "type": "tool_call",
+      "tool_name": "evaluate_rate_eligibility",
+      "args": {
+        "monthly_volume": 500,
+        "destination_mix": "mixed",
+        "business_type": "manufacturing"
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "Your simulated tier is Gold with a 10% discount. This is a simulated eligibility result, not a binding quote or booking. This POC does not provide base shipping prices, so I cannot calculate a final payable amount.",
+      "keywords": [
+        "Gold",
+        "10%"
+      ]
+    }
+  ]
+}
