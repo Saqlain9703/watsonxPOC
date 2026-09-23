@@ -1,0 +1,40 @@
+{
+  "dataset_name": "CLAR-001",
+  "agent": "supervisor_agent",
+  "starting_sentence": "What shipping discount can my business get?",
+  "story": "You are the shipping customer making this request: What shipping discount can my business get? This case ends after the first agent response. Do not supply any additional facts or revise your request.",
+  "max_user_turns": 1,
+  "goals": {
+    "specialist": [
+      "review"
+    ],
+    "review": [
+      "summarize"
+    ],
+    "summarize": []
+  },
+  "goal_details": [
+    {
+      "name": "specialist",
+      "type": "tool_call",
+      "tool_name": "rate_eligibility_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "review",
+      "type": "tool_call",
+      "tool_name": "response_agent",
+      "args": {
+        "IGNORE": null
+      }
+    },
+    {
+      "name": "summarize",
+      "type": "text",
+      "response": "What is your monthly shipment volume, destination mix (domestic only, mixed, or mostly international), and business type (ecommerce, retail, manufacturing, logistics, or other)?",
+      "keywords": []
+    }
+  ]
+}
