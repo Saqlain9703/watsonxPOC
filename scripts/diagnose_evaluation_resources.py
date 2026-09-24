@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -23,12 +24,20 @@ def run_cli(arguments: list[str]) -> str:
             "The 'orchestrate' command was not found. Activate the evaluation "
             "virtual environment and try again."
         )
+    environment = os.environ.copy()
+    # The Windows ADK emits Unicode status characters. When stdout is captured,
+    # some Windows installations otherwise fall back to a legacy charmap and
+    # fail before returning the JSON that this diagnostic needs.
+    environment["PYTHONIOENCODING"] = "utf-8"
+    environment["PYTHONUTF8"] = "1"
+    environment["NO_COLOR"] = "1"
     result = subprocess.run(
         [executable, *arguments],
         capture_output=True,
         text=True,
         encoding="utf-8",
         errors="replace",
+        env=environment,
         check=False,
     )
     if result.returncode:

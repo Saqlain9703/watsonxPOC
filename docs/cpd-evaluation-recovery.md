@@ -56,6 +56,16 @@ Run the repository diagnostic instead of parsing CLI JSON in PowerShell:
 python .\scripts\diagnose_evaluation_resources.py
 ```
 
+The script forces UTF-8 for its child `orchestrate` commands. If an older local
+copy reports `UnicodeEncodeError: 'charmap'`, pull the latest repository version
+or set UTF-8 in the current PowerShell session before running it:
+
+```powershell
+$env:PYTHONIOENCODING = "utf-8"
+$env:PYTHONUTF8 = "1"
+python .\scripts\diagnose_evaluation_resources.py
+```
+
 The evaluator reads every native agent and tool before opening the dataset. In
 evaluation framework 1.5.2, any agent tool UUID absent from the tools endpoint
 causes a bare `KeyError('<uuid>')`. The diagnostic prints the owning agent.
