@@ -100,6 +100,24 @@ python .\scripts\diagnose_evaluation_resources.py
 Removing and recreating an agent gives it a new internal ID. Update any external
 monitoring or governance association that used the previous ID.
 
+If every reported reference belongs to an unrelated shared or system test agent,
+do not delete that agent. Apply the repository's reversible workaround instead:
+
+```powershell
+python .\scripts\patch_evaluation_resource_map.py apply
+python .\scripts\patch_evaluation_resource_map.py status
+```
+
+This changes only the evaluation framework inside the active virtual environment.
+It makes the resource map ignore missing tool IDs. Use it only when the diagnostic
+does not report `supervisor_agent`, `rate_eligibility_agent`,
+`general_enquiry_agent`, or `response_agent`. Restore the package after capturing
+the metrics:
+
+```powershell
+python .\scripts\patch_evaluation_resource_map.py restore
+```
+
 ## 5. Run one smoke case
 
 ```powershell
