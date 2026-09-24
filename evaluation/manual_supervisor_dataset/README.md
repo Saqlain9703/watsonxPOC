@@ -41,3 +41,7 @@ orchestrate evaluations evaluate \
 ```
 
 For PowerShell, replace each trailing `\` with a backtick.
+
+For CPD setup, UUID `KeyError` recovery, a one-case smoke run, and commands to
+open `summary_metrics.csv`, follow
+[`docs/cpd-evaluation-recovery.md`](../../docs/cpd-evaluation-recovery.md).
